@@ -1,0 +1,8 @@
+	component my_pll is
+		port (
+			rst      : in  std_logic := 'X'; -- reset
+			refclk   : in  std_logic := 'X'; -- clk
+			outclk_0 : out std_logic         -- clk
+		);
+	end component my_pll;
+
