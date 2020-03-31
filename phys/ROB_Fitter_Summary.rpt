@@ -1,0 +1,55 @@
+Summary report for ROB
+Tue Mar 31 13:21:57 2020
+Quartus Prime Version 18.1.0 Build 222 09/21/2018 SJ Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Fitter Summary
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------+
+; Fitter Summary                                                           ;
++-----------------------------+--------------------------------------------+
+; Fitter Status               ; Successful - Tue Mar 31 13:09:53 2020      ;
+; Quartus Prime Version       ; 18.1.0 Build 222 09/21/2018 SJ Pro Edition ;
+; Revision Name               ; ROB                                        ;
+; Top-level Entity Name       ; ROB_top                                    ;
+; Family                      ; Arria 10                                   ;
+; Device                      ; 10AS027E1F29E1HG                           ;
+; Timing Models               ; Final                                      ;
+; Logic utilization (in ALMs) ; 48 / 101,620 ( < 1 % )                     ;
+; Total registers             ; 59                                         ;
+; Total pins                  ; 126 / 416 ( 30 % )                         ;
+; Total virtual pins          ; 0                                          ;
+; Total block memory bits     ; 720 / 15,360,000 ( < 1 % )                 ;
+; Total RAM Blocks            ; 2 / 750 ( < 1 % )                          ;
+; Total DSP Blocks            ; 0 / 830 ( 0 % )                            ;
+; Total HSSI RX channels      ; 0 / 12 ( 0 % )                             ;
+; Total HSSI TX channels      ; 0 / 12 ( 0 % )                             ;
+; Total PLLs                  ; 1 / 32 ( 3 % )                             ;
++-----------------------------+--------------------------------------------+
+
+

@@ -33,7 +33,6 @@
 set_time_format -unit ns -decimal_places 3
 
 
-
 #**************************************************************
 # Create Clock
 #**************************************************************
@@ -45,6 +44,7 @@ create_clock -name {clk} -period 10.000 -waveform { 0.000 5.000 }  [get_pins {u0
 # Create Generated Clock
 #**************************************************************
 
+derive_pll_clocks 
 
 
 #**************************************************************
@@ -103,7 +103,7 @@ set_output_delay -add_delay  -clock [get_clocks {clk}]  1.000 [get_ports {req_re
 # Set False Path
 #**************************************************************
 
-
+set_false_path -from [get_registers] -to [get_ports {rsp*}]
 
 #**************************************************************
 # Set Multicycle Path
