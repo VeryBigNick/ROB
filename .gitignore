@@ -53,3 +53,12 @@ quartus_prj/db/ROB_top.tiscmp.slow_1200mv_85c.ddb
 quartus_prj/db/ROB_top.tmw_info
 quartus_prj/db/ROB_top.vpr.ammdb
 quartus_prj/db/ROB_top_partition_pins.json
+modelsim/vsim.wlf
+modelsim/work/_info
+modelsim/work/_lib.qdb
+modelsim/work/_lib1_0.qdb
+modelsim/work/_lib1_0.qpg
+modelsim/work/_lib1_0.qtl
+modelsim/work/_vmake
+phys/ROB.out.sdc.bak
+phys/ROB_top.sv.bak
