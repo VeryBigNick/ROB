@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Apr 01 12:05:03 2020
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : ROB_top
+Top-level Entity Name : ROB_top
+Family : Cyclone IV E
+Total logic elements : 236
+    Total combinational functions : 159
+    Dedicated logic registers : 159
+Total registers : 159
+Total pins : 126
+Total virtual pins : 0
+Total memory bits : 720
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

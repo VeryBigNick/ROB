@@ -1,0 +1,12 @@
+vlib work
+
+setenv TB_HOME ../
+vlog -f ../tb/vlog_ms.opt
+vsim tb
+add wave -r *
+radix -h
+run 10000 ns
+
+vlog -f ../tb/vlog_ms.opt
+restart -f
+run 10000 ns

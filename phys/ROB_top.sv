@@ -41,11 +41,15 @@ localparam   DWIDTH      = `TOP_DWIDTH  ;
 localparam   PWIDTH      = `TOP_PWIDTH  ;
 localparam   IDWIDTH     = `TOP_IDWIDTH ;
 
+wire	clk;
+wire	pll_clk;
+/*
 my_pll u0 (
-    .rst      (rst_),      //   input,  width = 1,   reset.reset
-    .refclk   (pin_clk),   //   input,  width = 1,  refclk.clk
-    .outclk_0 (clk)  //  output,  width = 1, outclk0.clk
+    .inclk0   	(pin_clk),
+    .c0 			(pll_clk)
 );
+*/
+global global ( .in(pin_clk), .out(clk) );
     
 ROB #(
         .ROB_SIZE                               ( ROB_SIZE     ),

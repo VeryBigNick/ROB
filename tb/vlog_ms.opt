@@ -1,0 +1,10 @@
++notimingchecks
++libext+.v
+-novopt
+-sv
+
++incdir+${TB_HOME}/RTL
++incdir+${TB_HOME}/tb
+
+${TB_HOME}/RTL/ROB.sv
+${TB_HOME}/tb/tb2.v
