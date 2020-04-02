@@ -149,3 +149,10 @@ quartus_prj/db/ROB_top.hier_info
 quartus_prj/db/ROB_top.pplq.rdb
 quartus_prj/db/ROB_top.quiproj.9932.rdr.flock
 quartus_prj/db/ROB_top.sta_cmp.7_slow_1200mv_85c.tdb
+yosys_prj/yosys.exe
+tb/start - копия
+yosys_prj/run_cycloneiv
+modelsim/work/_lib1_2.qdb
+modelsim/work/_lib1_2.qpg
+modelsim/work/_lib1_2.qtl
+quartus_prj/ROB_top.qws

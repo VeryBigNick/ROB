@@ -1,7 +1,12 @@
-source /auto/vgr/tools/lmlicenserc.bash && \
-export VCS_HOME=/auto/da/cad/synopsys/VCS/vN-2017.12 
-export TB_HOME=/home/polyakov_n/Documents/Elbrus-Next/ROB
+vlib work
 
-$VCS_HOME/bin/vlogan +nospecify +notimingchecks +define+USING_VCS +define+TRACING_ON=1 +v2k -f ${TB_HOME}/tb/vlog.opt && $VCS_HOME/bin/vcs -debug -l elab.log +nospecify +notimingchecks tb
+setenv TB_HOME ../
+vlog -f ../tb/vlog.opt
+vsim tb
+add wave -r *
+radix -h
+run 10000 ns
 
-dve -toolexe simv  -script ${TB_HOME}/tb/dve_start.tcl
+vlog -f ../tb/vlog.opt ;\
+restart -f ;\
+run 10000 ns

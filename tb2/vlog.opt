@@ -4,7 +4,7 @@
 -sv
 
 +incdir+${TB_HOME}/RTL
-+incdir+${TB_HOME}/tb
++incdir+${TB_HOME}/tb2
 
 ${TB_HOME}/RTL/ROB.sv
-${TB_HOME}/tb/tb2.v
+${TB_HOME}/tb2/tb.v

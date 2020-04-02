@@ -30,7 +30,8 @@ reg     [IDWIDTH - 1:0] req_ID      = 0;
 reg     [PWIDTH - 1:0]  req_param   = 0;
 wire                    req_ready   ;
 localparam              req_seed_delay = 32'h1d76993a;
-
+reg 					req_delay_high = 1'b0;
+reg		[9:0]			req_ready_n_cnt = 0;
 
 
 stand_delay     #(  .DELAY_MAX_PTR  ( 3 ),  .DELAY_START_EN ( 1 ), .DELAY_SEED (req_seed_delay) )
@@ -38,7 +39,7 @@ stand_delay     #(  .DELAY_MAX_PTR  ( 3 ),  .DELAY_START_EN ( 1 ), .DELAY_SEED (
         .clk,  .rst_,
         .delay_start    ( req_val & req_ready ),
         .delay_done     ( req_val ),
-        .delay_high     ( 1'b0 )
+        .delay_high     ( req_delay_high )
 );
 always @( posedge clk )
     if ( req_val & req_ready )  begin
@@ -54,15 +55,36 @@ wire    [IDWIDTH - 1:0] rsp_ID      ;
 wire    [PWIDTH - 1:0]  rsp_param   ;
 wire                    rsp_ready   ;
 localparam  rsp_ready_rnd_seed       = 32'h1d76993a;
+reg						rsp_ready_delay_high = 1'b0;
 
 stand_delay     #(  .DELAY_MAX_PTR  ( 4 ),  .DELAY_START_EN ( 1 ), .DELAY_SEED (rsp_ready_rnd_seed) )
     rsp_ready_delay (
         .clk,  .rst_,
         .delay_start    ( rsp_val & rsp_ready ),
         .delay_done     ( rsp_ready ),
-        .delay_high     ( 1'b0 )
+        .delay_high     ( rsp_ready_delay_high )
 );
 
+always @( posedge clk )
+	if ( ~req_delay_high & ~req_ready )	begin
+		if ( req_ready_n_cnt == 10'd20 )	begin
+			req_delay_high <= 1'b1;
+			req_ready_n_cnt <= 10'h0;
+		end
+		else
+			req_ready_n_cnt <= req_ready_n_cnt + 1;
+	end
+	else if ( req_delay_high & req_ready )	begin
+		if ( req_ready_n_cnt == 10'd100 )	begin
+			req_delay_high <= 1'b0;
+			req_ready_n_cnt <= 10'h0;
+		end
+		else
+			req_ready_n_cnt <= req_ready_n_cnt + 1;
+	end
+	else
+			req_ready_n_cnt <= 10'h0;
+		
 
 wire                    mem_req_val     ;
 wire    [AWIDTH - 1:0]  mem_req_addr    ;

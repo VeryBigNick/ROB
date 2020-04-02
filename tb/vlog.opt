@@ -1,6 +1,7 @@
 +notimingchecks
 +libext+.v
--sverilog
+-novopt
+-sv
 
 +incdir+${TB_HOME}/RTL
 +incdir+${TB_HOME}/tb
