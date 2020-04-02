@@ -41,16 +41,17 @@ localparam   DWIDTH      = `TOP_DWIDTH  ;
 localparam   PWIDTH      = `TOP_PWIDTH  ;
 localparam   IDWIDTH     = `TOP_IDWIDTH ;
 
+/*
 wire	clk;
 wire	pll_clk;
-/*
+
 my_pll u0 (
     .inclk0   	(pin_clk),
     .c0 			(pll_clk)
 );
-*/
+
 global global ( .in(pin_clk), .out(clk) );
-    
+*/    
 ROB #(
         .ROB_SIZE                               ( ROB_SIZE     ),
         .SWIDTH                                 ( SWIDTH       ),
@@ -60,7 +61,7 @@ ROB #(
         .IDWIDTH                                ( IDWIDTH      )
 )
     ROB (
-        .clk                                    ( clk          ),
+        .clk                                    ( pin_clk		),
         .rst_                                   ( rst_         ),
 
         .req_val                                ( req_val      ),

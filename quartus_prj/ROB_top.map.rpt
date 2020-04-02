@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ROB_top
-Wed Apr 01 12:05:03 2020
+Thu Apr 02 19:31:21 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -56,7 +56,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 01 12:05:03 2020       ;
+; Analysis & Synthesis Status        ; Successful - Thu Apr 02 19:31:21 2020       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; ROB_top                                     ;
 ; Top-level Entity Name              ; ROB_top                                     ;
@@ -65,8 +65,8 @@ https://fpgasoftware.intel.com/eula.
 ;     Total combinational functions  ; 159                                         ;
 ;     Dedicated logic registers      ; 159                                         ;
 ; Total registers                    ; 159                                         ;
-; Total pins                         ; 126                                         ;
-; Total virtual pins                 ; 0                                           ;
+; Total pins                         ; 1                                           ;
+; Total virtual pins                 ; 125                                         ;
 ; Total memory bits                  ; 720                                         ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 0                                           ;
@@ -78,6 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
 ; Top-level entity name                                            ; ROB_top            ; ROB_top            ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
@@ -206,9 +207,9 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;               ;
 ; Total combinational functions               ; 159           ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 75            ;
-;     -- 3 input functions                    ; 57            ;
-;     -- <=2 input functions                  ; 27            ;
+;     -- 4 input functions                    ; 77            ;
+;     -- 3 input functions                    ; 56            ;
+;     -- <=2 input functions                  ; 26            ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
 ;     -- normal mode                          ; 159           ;
@@ -218,15 +219,16 @@ https://fpgasoftware.intel.com/eula.
 ;     -- Dedicated logic registers            ; 159           ;
 ;     -- I/O registers                        ; 0             ;
 ;                                             ;               ;
-; I/O pins                                    ; 126           ;
+; Virtual pins                                ; 125           ;
+; I/O pins                                    ; 1             ;
 ; Total memory bits                           ; 720           ;
 ;                                             ;               ;
 ; Embedded Multiplier 9-bit elements          ; 0             ;
 ;                                             ;               ;
 ; Maximum fan-out node                        ; pin_clk~input ;
 ; Maximum fan-out                             ; 204           ;
-; Total fan-out                               ; 1661          ;
-; Average fan-out                             ; 2.70          ;
+; Total fan-out                               ; 1539          ;
+; Average fan-out                             ; 3.14          ;
 +---------------------------------------------+---------------+
 
 
@@ -235,7 +237,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                     ; Entity Name     ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+-----------------+--------------+
-; |ROB_top                                     ; 159 (0)             ; 159 (0)                   ; 720         ; 0            ; 0       ; 0         ; 126  ; 0            ; |ROB_top                                                                                ; ROB_top         ; work         ;
+; |ROB_top                                     ; 159 (0)             ; 159 (0)                   ; 720         ; 0            ; 0       ; 0         ; 1    ; 125          ; |ROB_top                                                                                ; ROB_top         ; work         ;
 ;    |ROB:ROB|                                 ; 159 (108)           ; 159 (96)                  ; 720         ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROB_top|ROB:ROB                                                                        ; ROB             ; work         ;
 ;       |rmem:ROB_dmem|                        ; 35 (35)             ; 41 (41)                   ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROB_top|ROB:ROB|rmem:ROB_dmem                                                          ; rmem            ; work         ;
 ;          |altsyncram:ram_cell_rtl_0|         ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |ROB_top|ROB:ROB|rmem:ROB_dmem|altsyncram:ram_cell_rtl_0                                ; altsyncram      ; work         ;
@@ -602,13 +604,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; cycloneiii_lcell_comb ; 159                         ;
 ;     normal            ; 159                         ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 26                          ;
-;         3 data inputs ; 57                          ;
-;         4 data inputs ; 75                          ;
+;         2 data inputs ; 25                          ;
+;         3 data inputs ; 56                          ;
+;         4 data inputs ; 77                          ;
 ; cycloneiii_ram_block  ; 45                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 1.82                        ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 1.87                        ;
 +-----------------------+-----------------------------+
 
 
@@ -627,7 +629,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Apr 01 12:04:54 2020
+    Info: Processing started: Thu Apr 02 19:31:12 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ROB_top -c ROB_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -639,7 +641,7 @@ Info (12021): Found 2 design units, including 2 entities, in source file /nikita
 Info (12021): Found 1 design units, including 1 entities, in source file my_pll.v
     Info (12023): Found entity 1: my_pll File: F:/Nikita/Labs/ROB/quartus_prj/my_pll.v Line: 40
 Info (12127): Elaborating entity "ROB_top" for the top level hierarchy
-Info (12128): Elaborating entity "ROB" for hierarchy "ROB:ROB" File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 86
+Info (12128): Elaborating entity "ROB" for hierarchy "ROB:ROB" File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 87
 Info (12128): Elaborating entity "rmem" for hierarchy "ROB:ROB|rmem:ROB_pmem" File: F:/Nikita/Labs/ROB/RTL/ROB.sv Line: 207
 Info (12128): Elaborating entity "rmem" for hierarchy "ROB:ROB|rmem:ROB_dmem" File: F:/Nikita/Labs/ROB/RTL/ROB.sv Line: 221
 Warning (276020): Inferred RAM node "ROB:ROB|rmem:ROB_dmem|ram_cell_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
@@ -714,14 +716,140 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 408 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 64 input pins
-    Info (21059): Implemented 62 output pins
-    Info (21061): Implemented 237 logic cells
+Info (15717): Design contains 125 virtual pins; timing numbers associated with paths containing virtual pins are estimates
+    Info (15719): Pin "req_ready" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 18
+    Info (15719): Pin "rsp_val" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 20
+    Info (15719): Pin "rsp_data[0]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[1]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[2]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[3]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[4]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[5]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[6]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[7]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[8]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[9]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[10]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[11]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[12]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[13]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[14]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[15]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[16]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[17]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[18]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[19]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[20]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[21]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[22]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[23]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[24]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[25]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[26]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[27]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[28]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[29]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[30]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_data[31]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 21
+    Info (15719): Pin "rsp_ID[0]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[1]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[2]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[3]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[4]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[5]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[6]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_ID[7]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 22
+    Info (15719): Pin "rsp_param[0]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 23
+    Info (15719): Pin "rsp_param[1]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 23
+    Info (15719): Pin "rsp_param[2]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 23
+    Info (15719): Pin "rsp_param[3]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 23
+    Info (15719): Pin "rsp_param[4]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 23
+    Info (15719): Pin "mem_req_val" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 26
+    Info (15719): Pin "mem_req_addr[0]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[1]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[2]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[3]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[4]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[5]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[6]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[7]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[8]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_addr[9]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 27
+    Info (15719): Pin "mem_req_ID[0]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 28
+    Info (15719): Pin "mem_req_ID[1]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 28
+    Info (15719): Pin "mem_req_ID[2]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 28
+    Info (15719): Pin "mem_req_ID[3]" is virtual output pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 28
+    Info (15718): Pin "req_val" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 14
+    Info (15718): Pin "rsp_ready" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 24
+    Info (15718): Pin "rst_" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 12
+    Info (15718): Pin "req_addr[0]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[1]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[2]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[3]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[4]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[5]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[6]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[7]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[8]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "req_addr[9]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 15
+    Info (15718): Pin "mem_rsp_data[0]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_val" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 30
+    Info (15718): Pin "mem_rsp_ID[0]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 31
+    Info (15718): Pin "mem_rsp_ID[1]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 31
+    Info (15718): Pin "mem_rsp_ID[2]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 31
+    Info (15718): Pin "mem_rsp_ID[3]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 31
+    Info (15718): Pin "mem_rsp_data[1]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[2]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[3]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[4]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[5]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[6]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[7]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[8]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[9]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[10]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[11]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[12]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[13]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[14]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[15]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[16]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[17]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[18]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[19]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[20]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[21]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[22]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[23]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[24]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[25]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[26]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[27]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[28]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[29]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[30]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "mem_rsp_data[31]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 35
+    Info (15718): Pin "req_ID[0]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[1]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[2]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[3]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[4]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[5]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[6]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_ID[7]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 16
+    Info (15718): Pin "req_param[0]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 17
+    Info (15718): Pin "req_param[1]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 17
+    Info (15718): Pin "req_param[2]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 17
+    Info (15718): Pin "req_param[3]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 17
+    Info (15718): Pin "req_param[4]" is virtual input pin File: F:/Nikita/Labs/ROB/phys/ROB_top.sv Line: 17
+Info (21057): Implemented 398 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 0 output pins
+    Info (21061): Implemented 352 logic cells
     Info (21064): Implemented 45 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 705 megabytes
-    Info: Processing ended: Wed Apr 01 12:05:03 2020
+    Info: Peak virtual memory: 709 megabytes
+    Info: Processing ended: Thu Apr 02 19:31:21 2020
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:25
 
