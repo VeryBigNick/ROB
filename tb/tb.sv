@@ -1,9 +1,10 @@
 `timescale  1ns / 10 ps
 
 `include    "ROB.sv"
+`include	"mem_model.sv"
 `include    "stand_delay.v"
-`include    "my_coder.v"
-`include    "my_arb_rr.v"
+// `include    "my_coder.v"
+// `include    "my_arb_rr.v"
 
 module  tb;
 
@@ -91,67 +92,27 @@ wire    [AWIDTH - 1:0]  mem_req_addr    ;
 wire    [SWIDTH - 1:0]  mem_req_ID      ;
 
 wire                    mem_rsp_val     ;
-reg     [SWIDTH - 1:0]  mem_rsp_ID      ;
-reg     [DWIDTH - 1:0]  mem_rsp_data    ;
-localparam  mem_rsp_rnd_seed = 32'h1d76993a;
-wire                    mem_rsp_val_delay_done;
+wire    [SWIDTH - 1:0]  mem_rsp_ID      ;
+wire    [DWIDTH - 1:0]  mem_rsp_data    ;
 
-
-reg     [ROB_SIZE - 1:0]    mem_req_scale;
-
-reg     [SWIDTH : 0]                cell_busy_N;
-reg     [ROB_SIZE - 1:0]            mem_req_wait_cell = 0;
-reg     [SWIDTH - 1:0]              mem_rsp_priority_pnt = 0;
-integer                             mem_rsp_priority_pnt_ceed = 32'h1d76993a;
-wire    [ROB_SIZE - 1:0]            mem_rsp_gnt;
-wire    [SWIDTH - 1:0]              mem_rsp_gnt_cell;
-
-
-assign  mem_rsp_val = |mem_rsp_gnt & mem_rsp_val_delay_done;
-assign  mem_rsp_ID  = mem_rsp_gnt_cell;
-assign  mem_rsp_data = mem_rsp_gnt_cell;
-            
-
-stand_delay     #(  .DELAY_MAX_PTR  ( 4 ),  .DELAY_START_EN ( 1 ), .DELAY_SEED (mem_rsp_rnd_seed) )
-    mem_rsp_delay (
-        .clk,  .rst_,
-        .delay_start    ( mem_rsp_val ),
-        .delay_done     ( mem_rsp_val_delay_done ),
-        .delay_high     ( 1'b0 )
-);            
-            
-            
-genvar  CELL_i;
-generate
-    for ( CELL_i = 0; CELL_i < ROB_SIZE; CELL_i++ )  begin:  CELL_i_blk
-    always @( posedge clk )
-        if ( mem_rsp_val & mem_rsp_ID == CELL_i )
-            mem_req_wait_cell[CELL_i] <= 0;
-        else if ( mem_req_val & mem_req_ID == CELL_i )
-            mem_req_wait_cell[CELL_i] <= 1;
-    end
-endgenerate
-
-my_arb_rr
-#(
-        .REQ_NUM                                ( ROB_SIZE                                 ),
-        .REQ_NUM_WIDTH                          ( SWIDTH                           )
+mem_model #(
+		.MEM_SIZE   (ROB_SIZE),
+		.IDWIDTH    (SWIDTH  ),
+		.AWIDTH     (AWIDTH  ),
+		.DWIDTH     (DWIDTH  )
 )
-mem_rsp_arb (
-        .requests                               ( mem_req_wait_cell                       ),                   // Вектор запросов
-        .priority_pnt                           ( mem_rsp_priority_pnt                    ),               // Указатель на запрос с наивысшем приоритетом
-        .grant                                  ( mem_rsp_gnt                             )                       // Вектор с указанием выбранного запроса
-);    
+	mem (
+        .clk             ,
+        .rst_            ,
 
-my_coder #( .N(ROB_SIZE),  .PTR(SWIDTH) )
-    mem_rsp_gnt_coder (
-        .in          (mem_rsp_gnt),
-        .out         (mem_rsp_gnt_cell),
-        .multi_in    ());
+		.mem_req_val     ,
+		.mem_req_addr    ,
+		.mem_req_ID      ,
+		.mem_rsp_val     ,
+		.mem_rsp_ID      ,
+		.mem_rsp_data    
+);
 
-    always @( posedge clk )
-        if ( mem_rsp_val )
-            mem_rsp_priority_pnt <= $dist_uniform(mem_rsp_priority_pnt_ceed  , 0, ROB_SIZE - 1);
 
             
 ROB #(
