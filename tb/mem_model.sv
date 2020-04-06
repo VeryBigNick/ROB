@@ -27,6 +27,7 @@ localparam  mem_rsp_rnd_seed = 32'h1d76993a;
 wire                    mem_rsp_val_delay_done;
 
 reg     [MEM_SIZE - 1:0]            mem_req_wait_cell = 0;
+reg		[AWIDTH - 1:0]  			mem_req_addr_buf	[MEM_SIZE - 1:0];
 reg     [IDWIDTH - 1:0]             mem_rsp_priority_pnt = 0;
 integer                             mem_rsp_priority_pnt_ceed = 32'h1d76993a;
 wire    [MEM_SIZE - 1:0]            mem_rsp_gnt;
@@ -35,7 +36,7 @@ wire    [IDWIDTH - 1:0]             mem_rsp_gnt_cell;
 
 assign  mem_rsp_val = |mem_rsp_gnt & mem_rsp_val_delay_done;
 assign  mem_rsp_ID  = mem_rsp_gnt_cell;
-assign  mem_rsp_data = mem_rsp_gnt_cell;
+assign  mem_rsp_data = mem_req_addr_buf[mem_rsp_gnt_cell];
             
 
 stand_delay     #(  .DELAY_MAX_PTR  ( 4 ),  .DELAY_START_EN ( 1 ), .DELAY_SEED (mem_rsp_rnd_seed) )
@@ -55,6 +56,10 @@ generate
             mem_req_wait_cell[CELL_i] <= 0;
         else if ( mem_req_val & mem_req_ID == CELL_i )
             mem_req_wait_cell[CELL_i] <= 1;
+	
+    always @( posedge clk )
+        if ( mem_req_val & mem_req_ID == CELL_i )
+			mem_req_addr_buf[CELL_i] <= mem_req_addr;
     end
 endgenerate
 

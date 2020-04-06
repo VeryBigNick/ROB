@@ -159,3 +159,10 @@ quartus_prj/ROB_top.qws
 modelsim/work/_lib1_4.qdb
 modelsim/work/_lib1_4.qpg
 modelsim/work/_lib1_4.qtl
+modelsim/work/_lib1_6.qdb
+modelsim/work/_lib1_6.qpg
+modelsim/work/_lib1_6.qtl
+modelsim/work/_lib1_7.qdb
+modelsim/work/_lib1_7.qpg
+modelsim/work/_lib1_7.qtl
+tb/tb.sv.bak

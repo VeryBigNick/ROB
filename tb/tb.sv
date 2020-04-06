@@ -148,17 +148,20 @@ dut (
         .mem_rsp_data                           ( mem_rsp_data )
 
 );
+localparam   EWIDTH      = AWIDTH < DWIDTH ? AWIDTH : DWIDTH;
 
 reg     [IDWIDTH - 1:0] rsp_ID_etalon  = 0;
+reg     [EWIDTH - 1:0]  rsp_addr_etalon  = 0;
 
 always @( posedge clk )
     if ( rst_ & rsp_val & rsp_ready )   begin
         rsp_ID_etalon <= rsp_ID_etalon + 1;
+		rsp_addr_etalon <= rsp_addr_etalon + 1;
         if ( rsp_ID !== rsp_ID_etalon )  begin
             $display("ERROR rsp_ID");
             $stop;        
         end
-        if ( rsp_data[SWIDTH - 1:0] !== rsp_ID_etalon[SWIDTH - 1:0] )  begin
+        if ( rsp_data[EWIDTH - 1:0] !== rsp_addr_etalon )  begin
             $display("ERROR rsp_data");
             $stop;        
         end
