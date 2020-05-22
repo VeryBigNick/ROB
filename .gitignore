@@ -166,3 +166,17 @@ modelsim/work/_lib1_7.qdb
 modelsim/work/_lib1_7.qpg
 modelsim/work/_lib1_7.qtl
 tb/tb.sv.bak
+quartus_prj/db/ROB_top.acvq.rdb
+tb_sv/work/_info
+tb_sv/work/_lib.qdb
+tb_sv/work/_lib1_26.qdb
+tb_sv/work/_lib1_26.qpg
+tb_sv/work/_lib1_26.qtl
+tb_sv/work/_lib1_27.qdb
+tb_sv/work/_lib1_27.qpg
+tb_sv/work/_lib1_27.qtl
+tb_sv/work/_lib1_7.qdb
+tb_sv/work/_lib1_7.qpg
+tb_sv/work/_lib1_7.qtl
+tb_sv/work/_vmake
+tb_sv/vsim.wlf
