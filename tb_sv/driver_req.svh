@@ -1,4 +1,4 @@
-class	driver_req;
+class	driver_req	extends 	component;
 
 	virtual	tb_req_ifc	req;
 

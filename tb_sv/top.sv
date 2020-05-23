@@ -14,67 +14,42 @@ module	top;
 	tb_req_ifc	tb_req(clk);
 	tb_mem_ifc	tb_mem(clk);
 	tb_rsp_ifc	tb_rsp(clk);
-	
-	mem_t			mem;
-	driver_req		drv_h;
-	generator		gen_h;
-	monitor			mon_h;
+
+	basetest		test_h;
 	mem_model		mem_h;
 
 	initial	begin
-		drv_h = new(tb_req);
-		gen_h = new(.drv_h(drv_h));
-		mon_h = new( .req(tb_req), .rsp(tb_rsp) );
-		mem_h = new(.wr_data(tb_req), .rd_data(tb_mem));
+		rob_package::tb_req = tb_req;
+		rob_package::tb_mem = tb_mem;
+		rob_package::tb_rsp = tb_rsp;
+
+		test_h = new();
+		mem_h = new();
+		
+		$display("Build---------------");
+		test_h.build();
+		mem_h.build();
 		
 		$display("Reset---------------");
-		drv_h.reset();
-		mon_h.reset();
+		test_h.reset();
 		mem_h.reset();
+
 		$display("Run-----------------");
 		fork	
-			mem_h.run();
+			mem_h.run(0);
 		join_none
-		fork
-			gen_h.run(1000, mem);
-			mon_h.run(mem);
-		join
+		test_h.run(10000);
+
 		$display("Check-----------------");		
-		mon_h.check(mem);
+		test_h.check(10000);
+		mem_h.check(0);
+
 		$display("Finish--------------");
 		$finish;		
 	end
 
 
 	
-// daemon for random responces from mem
-/*
-initial	begin
-		forever	begin
-			if ( mem_h.req_buf.size() != 0 )
-				mem_h.rsp();
-			else
-				@(posedge clk);
-		end
-	end
-*/
-
-	
-// daemon for requests to mem
-/*
-	always @(posedge clk)
-		if ( tb_mem.req_val )	begin
-			mem_h.req();
-		end
-*/
-// daemon for writes to mem
-/*
-	always @(posedge clk)
-		if ( tb_req.val )	begin
-			mem_h.write();
-			mon_h.add();
-		end
-*/	
 ROB #(
         .ROB_SIZE     ( ROB_SIZE     ),
         .SWIDTH       ( SWIDTH       ),

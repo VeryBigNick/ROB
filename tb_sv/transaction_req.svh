@@ -12,27 +12,25 @@ class		transaction_req
 	logic   [PWIDTH - 1:0]  param   ;
 	logic	[DWIDTH - 1:0]	data	;
 
-	function	new();
-	endfunction
-	
 	virtual	function	int	rand_trn (
-			ref mem_t	mem );
+			addr_table			addr_table_h );
 		static	int	temp = 0;
 		static	int	seed = 10;
 
-		if ( mem.size() == 2**AWIDTH )
+		if ( addr_table_h.size_f() == 2**AWIDTH )
 			return	0;
 			
 		do 	begin
 			this.addr 	= $random(seed);
 //			$display("Array = %p, generated addr = %h", mem, addr);
 		end
-		while ( mem.exists(this.addr) );
+		while ( addr_table_h.exist_f(this.addr)/*mem.exists(this.addr)*/ );
 		
 		this.ID 	= $urandom_range(0, 2**IDWIDTH);
 		this.param	= temp;
 		this.data	= $urandom_range(0, 2**DWIDTH - 1);
-		mem[this.addr] = this.data;
+//		mem[this.addr] = this.data;
+		addr_table_h.add_f(this.addr, this.data);
 		temp++;
 		return 1;
 	endfunction

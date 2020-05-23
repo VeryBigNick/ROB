@@ -1,7 +1,9 @@
-class	monitor;
+class	monitor	extends	component;
 
-	virtual	tb_req_ifc	req;
-	virtual	tb_rsp_ifc	rsp;
+	virtual		tb_req_ifc	req;
+	virtual		tb_rsp_ifc	rsp;
+	addr_table				addr_table_h;
+	int						rsp_cnt;
 
 	typedef	struct	{
 		logic	[AWIDTH - 1:0]  addr   	;
@@ -12,12 +14,14 @@ class	monitor;
 	
 	req_buf_t	req_buf[$];
 
-	function	new	(
-		virtual	tb_req_ifc	req,
-		virtual	tb_rsp_ifc	rsp
+	function new		(
+		addr_table			mem
 		);
-		this.req = req;
-		this.rsp = rsp;		
+		this.req = rob_package::tb_req;
+		this.rsp = rob_package::tb_rsp;	
+		this.addr_table_h = new();
+		this.addr_table_h = mem;
+		rsp_cnt = 0;
 	endfunction
 
 	virtual task	reset();
@@ -36,7 +40,7 @@ class	monitor;
 		end
 	endtask
 
-	virtual	task	verif(ref mem_t	mem);
+	virtual	task	verif();
 		static int		timeout = 0;
 		req_buf_t	rsp_next;
 		while	( timeout != TIMEOUT )	begin
@@ -60,7 +64,8 @@ class	monitor;
 					else	begin
 						$display("Correct response: addr = %h, ID = %h, data = %h", 
 							rsp_next.addr, rsp_next.ID, rsp_next.data);
-						mem.delete(rsp_next.addr);
+						addr_table_h.delete_f(rsp_next.addr);
+						rsp_cnt++;
 					end
 					timeout = 0;
 				end
@@ -78,24 +83,26 @@ class	monitor;
 		end
 	endtask
 	
-	virtual	task	run(ref mem_t	mem);
+	virtual	task	run(int n);
 		fork
 			this.add();
 			this.ready_rand();
 		join_none
 		
-		this.verif(mem);
+		this.verif();
 	endtask
 	
-	virtual	task	check	(ref mem_t	mem);
+	virtual	task	check	(int n);
 		if ( req_buf.size() != 0 )	begin
 			$error("Requests buffer is not empty: %p", req_buf);
 			$stop();
 		end
-		if ( mem.size() != 0 )	begin
-			$error("Requests buffer is not empty: %p", mem);
+		else if ( rsp_cnt !== n )	begin
+			$error("Responces lost: expected = %d, done = %d", n, rsp_cnt);
 			$stop();
 		end
+		else
+			$display("Monitor is OK!");
 	endtask
 
 endclass
